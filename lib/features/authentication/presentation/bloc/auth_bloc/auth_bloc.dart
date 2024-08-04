@@ -1,7 +1,9 @@
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_app/core/model/handling_model.dart';
-import 'package:ride_app/features/signup/presentation/bloc/auth_bloc/auth_event.dart';
-import 'package:ride_app/features/signup/presentation/bloc/auth_bloc/auth_state.dart';
+import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_event.dart';
+import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_state.dart';
+
+import 'package:ride_app/model/handling_model.dart';
 
 import '../../../../../core/service/request/auth_srvice.dart';
 

@@ -1,4 +1,5 @@
-import 'package:ride_app/core/model/Login_model.dart';
+
+import 'package:ride_app/model/login_model.dart';
 
 import '../../../../../model/client_model.dart';
 
