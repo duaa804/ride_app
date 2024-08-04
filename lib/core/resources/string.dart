@@ -30,4 +30,5 @@ class StringManger {
   String confirmbooking = 'Confirm Booking';
   String confirmRide = 'Confirm Ride';
   String thankyou = 'Thank you';
+   String signUpPage = 'Sign up with your email or\n phone number';
 }

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:ride_app/core/resources/colors.dart';
 
 Widget roundediconButton({required value,required}){
   return Stack(
@@ -14,7 +15,7 @@ Widget roundediconButton({required value,required}){
           style: ElevatedButton.styleFrom(
              shape: CircleBorder(),
              padding: EdgeInsets.all(24),
-            backgroundColor: Colors.green),
+            backgroundColor: color.primaryColor),
         ),
       ),
       SizedBox(
@@ -22,7 +23,7 @@ Widget roundediconButton({required value,required}){
         width: 86,
         child: CircularProgressIndicator(    
           value:value,
-          color: Colors.green, 
+          color: color.primaryColor, 
           backgroundColor: Colors.green.shade100,
          
         ),

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:ride_app/core/model/Login_model.dart';
-import 'package:ride_app/core/model/client_model.dart';
 import 'package:ride_app/core/service/coreService.dart';
+import 'package:ride_app/model/client_model.dart';
+import 'package:ride_app/model/login_model.dart';
 
 import '../../../model/handling_model.dart';
 
