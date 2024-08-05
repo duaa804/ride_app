@@ -67,56 +67,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       routerConfig: _router,
       debugShowCheckedModeBanner: false,
-      // home: Scaffold(
-      //   body: FlutterMap(
-      //     options: MapOptions(
-      //         initialCenter: LatLng(33.5093553, 36.2939167),
-      //         initialZoom: 20,
-      //         onTap: (_, latlng) {
-      //           setState(() {
-      //             tappedPoints.add(latlng);
-      //             debugPrint(latlng.toString());
-      //           });
-      //         }),
-      //     children: [
-      //       TileLayer(
-      //         urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-      //         userAgentPackageName: 'com.example.app',
-      //       ),
-      //       MarkerLayer(
-      //         markers: [
-      //           Marker(
-      //             point: LatLng(33.5093553, 36.2939167),
-      //             width: 80,
-      //             height: 80,
-      //             child: Icon(
-      //               Icons.pin_drop,
-      //               size: 60,
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //       MarkerLayer(
-      //         markers: [
-      //           Marker(
-      //             point: LatLng(33.50, 36.20),
-      //             width: 80,
-      //             height: 80,
-      //             child: Icon(Icons.home),
-      //           ),
-      //         ],
-      //       ),
-      //       RichAttributionWidget(
-      //         attributions: [
-      //           TextSourceAttribution(
-      //             'OpenStreetMap contributors',
-      //             onTap: () {},
-      //           ),
-      //         ],
-      //       ),
-      //     ],
-      //   ),
-      // ),
+                  
     );
   }
 }

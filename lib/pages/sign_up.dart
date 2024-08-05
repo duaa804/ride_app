@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/resources/string.dart';
 import 'package:ride_app/core/widgets/textFields.dart';
@@ -14,12 +15,14 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String? selectedValue;
-  TextEditingController email = TextEditingController();
 
-  TextEditingController name = TextEditingController();
-
-  TextEditingController mobilenumber = TextEditingController();
-  TextEditingController gender = TextEditingController();
+  TextEditingController firstName = TextEditingController();
+  TextEditingController lastName = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController birthdate = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController confirmpassword = TextEditingController();
   List<String> options = ['male', 'female'];
 
   @override
@@ -51,114 +54,65 @@ class _SignUpState extends State<SignUp> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: signUpTextField(text: 'Name', controller: name),
+              child: signUpTextField(text: 'FirstName', controller: firstName),            
+            ),
+               Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: signUpTextField(text: 'LastName', controller: lastName),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: signUpTextField(text: 'Email', controller: email),
+              child: signUpTextField(text: 'UserName', controller: username),
+            ),
+               Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: signUpTextField(text: 'Birthday', controller: birthdate),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 336,
-                height: 54,
-                child: TextField(
-                  controller: mobilenumber,
-                  decoration: InputDecoration(
-                    prefix: Row(
-                      children: [
-                        Container(
-                          width: 15,
-                          height: 10,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2),
-                              color: color.primaryColor),
-                          child: const Icon(
-                            Icons.circle,
-                            color: Colors.red,
-                            size: 5,
-                          ),
-                        ),
-                        const Icon(Icons.arrow_drop_down)
-                      ],
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: color.greySubtitle),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    hintText: 'Your mobile number',
-                  ),
+              child: IntlPhoneField(
+                
+                controller: phone,
+                decoration: const  InputDecoration(
+                  
+                  // prefix: Row(
+                  //     children: [
+                  //       Container(
+                  //         width: 15,
+                  //         height: 10,
+                  //         decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(2),
+                  //             color: color.primaryColor),
+                  //         child: const Icon(
+                  //           Icons.circle,
+                  //           color: Colors.red,
+                  //           size: 5,
+                  //         ),
+                  //       ),
+                  //       const Icon(Icons.arrow_drop_down)
+                  //     ],),
+                  hintText: 'Your mobile number',
+                  border: OutlineInputBorder(borderSide:BorderSide(color: color.greySubtitle) )
                 ),
+                onSubmitted: (val){
+                  phone.text= val;
+                },
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 8,bottom: 30,left: 8),
-            //   child: Container(
-
-            //       decoration:BoxDecoration( border:
-            //             Border.all( color: color.greySubtitle) ,
-            //             borderRadius: BorderRadius.circular(8),
-            //           ),
-            //     width: double.infinity,
-            //     height: 54,
-            //     child: DropDownField(
-            //       controller:gender ,
-            //       hintText: 'Gender',
-            //       enabled: true,
-            //       itemsVisibleInDropdown: 5,
-            //       items: options,
-            //       onValueChanged: (value){
-            //         setState(() {
-            //           selectedValue=value;
-            //         });
-            //       },
-            //     ),
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.all(10),
-            //   child: SizedBox(
-            //     width: 336,
-            //     height: 54,
-            //     child: TextField(
-            //       controller: gender,
-            //       decoration: InputDecoration(
-            //           border: OutlineInputBorder(
-            //             borderSide: const BorderSide(color: color.greySubtitle),
-            //             borderRadius: BorderRadius.circular(8),
-            //           ),
-            //           hintText: 'Gender',
-            //           suffix: DropdownButton(
-            //             hint: const Text('Gender'),
-            //             dropdownColor: Colors.grey,
-            //             isExpanded: true,
-            //             style:
-            //                 const TextStyle(color: Colors.black, fontSize: 18),
-            //             icon: const Icon(Icons.arrow_drop_down),
-            //             value: selectedValue,
-            //             onChanged: (newval) {
-            //               setState(() {
-            //                 selectedValue != newval;
-            //                 gender.text != newval;
-            //               });
-            //             },
-            //             items: options.map((valueItem) {
-            //               return DropdownMenuItem(
-            //                 value: valueItem,
-            //                 child: Text(valueItem),
-            //               );
-            //             }).toList(),
-            //           )),
-
-            //     ),
-            //   ),
-            // ),
+         
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
+              child: Container(
                 width: double.infinity,
                 height: 54,
-                child: DropdownButton(
+                child:TextField(
+                   decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(color: color.greySubtitle),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                hintText: 'Gender'
+               ,suffix:   DropdownButton(
                   hint: const Text('Gender'),
                   dropdownColor: Colors.grey,
                   isExpanded: true,
@@ -168,7 +122,6 @@ class _SignUpState extends State<SignUp> {
                   onChanged: (newval) {
                     setState(() {
                       selectedValue = newval;
-                      gender.text != newval;
                     });
                   },
                   items: options.map((valueItem) {
@@ -178,6 +131,7 @@ class _SignUpState extends State<SignUp> {
                     );
                   }).toList(),
                 ),
+                   ),),
               ),
             ),
             Expanded(
@@ -221,15 +175,15 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 90),
+                 const Padding(
+                    padding:  EdgeInsets.only(left:25),
                     child: Text(
                       "Privacy policy.",
                       style: TextStyle(color: color.primaryColor, fontSize: 12),
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.only(top: 30, left: 10),
+                      padding: const EdgeInsets.only(top: 30, left: 10,right: 10),
                       child: Container(
                         width: double.infinity,
                         height: 60,
@@ -247,11 +201,11 @@ class _SignUpState extends State<SignUp> {
                       )),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Center(
-                      child: Text(
-                        '--------------------------or-------------------------',
-                        style: TextStyle(color: color.greySubtitle),
-                      ),
+                    child: Center(child: Row(
+                      children: [Divider(thickness: 1,),
+                      Text('or'),Divider(thickness: 1,)],
+                    ),
+                    
                     ),
                   )
                 ],
@@ -298,7 +252,7 @@ class _SignUpState extends State<SignUp> {
               padding: EdgeInsets.only(left: 50, bottom: 8, top: 15),
               child: Row(
                 children: [
-                 const Text(
+                  const Text(
                     '   Already have an account? ',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                   ),
@@ -306,7 +260,7 @@ class _SignUpState extends State<SignUp> {
                     onTap: () {
                       context.go('/login');
                     },
-                    child:const Text(
+                    child: const Text(
                       'Sign in',
                       style: TextStyle(
                           color: color.primaryColor,

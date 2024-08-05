@@ -109,7 +109,8 @@ Widget signupContainer({required Text text, required Icon icon}) {
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(8),
       border: Border.all(color: color.greySubtitle))
-    ,child: Align(alignment: Alignment.center,
+    ,child: Padding(
+      padding: const EdgeInsets.only(left: 100,right: 30),
       child: Row(
         children: [
           icon,
