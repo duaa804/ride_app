@@ -1,7 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/resources/string.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
@@ -50,7 +49,11 @@ class ThreeOnboarding extends StatelessWidget {
           ),
           Padding(
             padding:  EdgeInsets.only(top: 50),
-            child: roundediconButton(value: 0.30),
+            child: InkWell(
+              onTap: (){
+                context.go('/welcome');
+              },
+              child: roundediconButton(value: 1.0)),
           
                 
          

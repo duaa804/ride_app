@@ -1,7 +1,5 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/resources/string.dart';
@@ -67,28 +65,9 @@ class TwoOnboarding extends StatelessWidget {
                 onTap: () {
                   context.go('/threeonboarding');
                 },
-                child: roundediconButton(value: 0.30)),
-            // child: Stack(
-            //   children:[ Container(
-            //     width: 60,height: 60,
-            //     decoration: BoxDecoration(borderRadius: BorderRadius.circular(1000)),
-            //     child: const  CircularProgressIndicator(
-            //       strokeWidth: 2,
-            //       color: color.greenCard,
-            //     backgroundColor: color.greyDescription,
-            //     value: 0.30,
-
-            //   ),
-            //             ),
-            //             Positioned(
-            //               top: 5,left: 5,bottom: 5,right: 5,
-            //               child: Container(width: 65,height: 65,
-            //               decoration: BoxDecoration(borderRadius: BorderRadius.circular(1000), color: color.greenCard,),
-
-            //               child: const Center(child:  Icon(Icons.arrow_forward,color: color.BlackTitlePage,)),),
-            //             )
-            //             ]
-            // ),
+                child: roundediconButton(value: 0.70)),
+        
+       
           ),
         ],
       ),
