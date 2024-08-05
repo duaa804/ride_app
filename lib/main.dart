@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/confige/go_route.dart';
 
+import 'core/confige/hive_init.dart';
+
 void main() {
+  openHive();
   runApp(MyApp());
 }
 

@@ -60,12 +60,12 @@ Widget roundedtextButton({required value,required text}){
   );
 }
 
-Widget importantButton({required text}){
+Widget importantButton({required text,required function}){
   return SizedBox(
     width: 340,
     height: 54,
     child: ElevatedButton(
-     onPressed: (){},
+     onPressed: function,
      child: Text(text),
      style: ElevatedButton.styleFrom(    
       backgroundColor: Colors.green,

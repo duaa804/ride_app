@@ -1,10 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/resources/string.dart';
+import 'package:ride_app/core/widgets/buttons.dart';
 import 'package:ride_app/core/widgets/textFields.dart';
+import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_bloc.dart';
+import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_event.dart';
+import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_state.dart';
+import 'package:ride_app/model/client_model.dart';
+import 'package:ride_app/pages/map_screen.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({super.key});
@@ -54,9 +62,9 @@ class _SignUpState extends State<SignUp> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: signUpTextField(text: 'FirstName', controller: firstName),            
+              child: signUpTextField(text: 'FirstName', controller: firstName),
             ),
-               Padding(
+            Padding(
               padding: const EdgeInsets.all(8.0),
               child: signUpTextField(text: 'LastName', controller: lastName),
             ),
@@ -64,74 +72,82 @@ class _SignUpState extends State<SignUp> {
               padding: const EdgeInsets.all(8.0),
               child: signUpTextField(text: 'UserName', controller: username),
             ),
-               Padding(
+            Padding(
               padding: const EdgeInsets.all(8.0),
               child: signUpTextField(text: 'Birthday', controller: birthdate),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
+              child: signUpTextField(text: 'Password', controller: password),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: signUpTextField(
+                  text: 'Confirm password', controller: confirmpassword),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: IntlPhoneField(
-                
                 controller: phone,
-                decoration: const  InputDecoration(
-                  
-                  // prefix: Row(
-                  //     children: [
-                  //       Container(
-                  //         width: 15,
-                  //         height: 10,
-                  //         decoration: BoxDecoration(
-                  //             borderRadius: BorderRadius.circular(2),
-                  //             color: color.primaryColor),
-                  //         child: const Icon(
-                  //           Icons.circle,
-                  //           color: Colors.red,
-                  //           size: 5,
-                  //         ),
-                  //       ),
-                  //       const Icon(Icons.arrow_drop_down)
-                  //     ],),
-                  hintText: 'Your mobile number',
-                  border: OutlineInputBorder(borderSide:BorderSide(color: color.greySubtitle) )
-                ),
-                onSubmitted: (val){
-                  phone.text= val;
+                decoration: const InputDecoration(
+
+                    // prefix: Row(
+                    //     children: [
+                    //       Container(
+                    //         width: 15,
+                    //         height: 10,
+                    //         decoration: BoxDecoration(
+                    //             borderRadius: BorderRadius.circular(2),
+                    //             color: color.primaryColor),
+                    //         child: const Icon(
+                    //           Icons.circle,
+                    //           color: Colors.red,
+                    //           size: 5,
+                    //         ),
+                    //       ),
+                    //       const Icon(Icons.arrow_drop_down)
+                    //     ],),
+                    hintText: 'Your mobile number',
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: color.greySubtitle))),
+                onSubmitted: (val) {
+                  phone.text = val;
                 },
               ),
             ),
-         
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 width: double.infinity,
                 height: 54,
-                child:TextField(
-                   decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(color: color.greySubtitle),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                hintText: 'Gender'
-               ,suffix:   DropdownButton(
-                  hint: const Text('Gender'),
-                  dropdownColor: Colors.grey,
-                  isExpanded: true,
-                  style: const TextStyle(color: Colors.black, fontSize: 18),
-                  icon: const Icon(Icons.arrow_drop_down),
-                  value: selectedValue,
-                  onChanged: (newval) {
-                    setState(() {
-                      selectedValue = newval;
-                    });
-                  },
-                  items: options.map((valueItem) {
-                    return DropdownMenuItem(
-                      value: valueItem,
-                      child: Text(valueItem),
-                    );
-                  }).toList(),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: color.greySubtitle),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    hintText: 'Gender',
+                    suffix: DropdownButton(
+                      hint: const Text('Gender'),
+                      dropdownColor: Colors.grey,
+                      isExpanded: true,
+                      style: const TextStyle(color: Colors.black, fontSize: 18),
+                      icon: const Icon(Icons.arrow_drop_down),
+                      value: selectedValue,
+                      onChanged: (newval) {
+                        setState(() {
+                          selectedValue = newval;
+                        });
+                      },
+                      items: options.map((valueItem) {
+                        return DropdownMenuItem(
+                          value: valueItem,
+                          child: Text(valueItem),
+                        );
+                      }).toList(),
+                    ),
+                  ),
                 ),
-                   ),),
               ),
             ),
             Expanded(
@@ -175,44 +191,98 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                 const Padding(
-                    padding:  EdgeInsets.only(left:25),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 25),
                     child: Text(
                       "Privacy policy.",
                       style: TextStyle(color: color.primaryColor, fontSize: 12),
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.only(top: 30, left: 10,right: 10),
-                      child: Container(
-                        width: double.infinity,
-                        height: 60,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: color.primaryColor),
-                        child: const Center(
-                            child: Text(
-                          'Sign Up',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400),
+                    padding:
+                        const EdgeInsets.only(top: 30, left: 10, right: 10),
+                    child: BlocProvider(
+                        create: (context) => AuthBloc(),
+                        child: BlocConsumer<AuthBloc, AuthState>(
+                          listener: (context, state) {
+                            if (state is FailedToRegister) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content:
+                                    Text("Sign Up is Fiald, Please Try again"),
+                                backgroundColor: Colors.red,
+                              ));
+                            }
+                          },
+                          builder: (context, state) {
+                            if (state is AuthInitialState) {
+                              return importantButton(
+                                  text: "Sign Up",
+                                  function: () {
+                                    print(firstName.text);
+                                    context.read<AuthBloc>().add(Register(
+                                        client: ClientModel(
+                                            firstName: firstName.text,
+                                            lastName: lastName.text,
+                                            phone: phone.text,
+                                            username: username.text,
+                                            birthDate: birthdate.text,
+                                            password: password.text,
+                                            confirmPassword:
+                                                confirmpassword.text)));
+                                  });
+                            } else if (state is SuccessToRegister) {
+                              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MapScreen(),
+                                    ));
+                              });
+                            } else if (state is FailedToRegister) {
+                              return importantButton(
+                                  text: "Sign Up",
+                                  function: () {
+                                    context.read<AuthBloc>().add(Register(
+                                        client: ClientModel(
+                                            firstName: firstName.text,
+                                            lastName: lastName.text,
+                                            phone: phone.text,
+                                            username: username.text,
+                                            birthDate: birthdate.text,
+                                            password: password.text,
+                                            confirmPassword:
+                                                confirmpassword.text)));
+                                  });
+                            } else {
+                              return CupertinoActivityIndicator();
+                            }
+                            return SizedBox();
+                          },
                         )),
-                      )),
+                  ),
                   const Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Center(child: Row(
-                      children: [Divider(thickness: 1,),
-                      Text('or'),Divider(thickness: 1,)],
-                    ),
-                    
+                    child: Center(
+                      child: Row(
+                        children: [
+                          Divider(
+                            thickness: 1,
+                          ),
+                          Text('or'),
+                          Divider(
+                            thickness: 1,
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(
+                  top: 8.0, bottom: 8.0, left: 15, right: 15),
               child: signupContainer(
                   text: const Text(
                     'Sign up with Gmail',
