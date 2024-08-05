@@ -67,7 +67,7 @@ class TwoOnboarding extends StatelessWidget {
                 onTap: () {
                   context.go('/threeonboarding');
                 },
-                child: roundediconButton(value: 0.30)),
+                child: roundediconButton(value: 0.70)),
             // child: Stack(
             //   children:[ Container(
             //     width: 60,height: 60,
