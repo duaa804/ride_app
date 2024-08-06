@@ -1,11 +1,11 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_event.dart';
-import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_state.dart';
+import 'package:ride_app/src/features/auth/bloc/auth_event.dart';
+import 'package:ride_app/src/features/auth/bloc/auth_state.dart';
 
-import 'package:ride_app/model/handling_model.dart';
+import 'package:ride_app/core/model/handling_model.dart';
 
-import '../../../../../core/service/request/auth_srvice.dart';
+import '../../../../core/service/request/auth_srvice.dart';
 
 class AuthBloc extends Bloc<AuthEvent,AuthState>{
   AuthBloc():super(AuthInitialState()){

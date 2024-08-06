@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:ride_app/core/service/coreService.dart';
-import 'package:ride_app/model/client_model.dart';
-import 'package:ride_app/model/login_model.dart';
+import 'package:ride_app/src/features/auth/model/client_model.dart';
+import 'package:ride_app/core/model/login_model.dart';
 
-import '../../../model/handling_model.dart';
+import '../../model/handling_model.dart';
 import '../../confige/hive_init.dart';
 
 abstract class AuthService extends Coreservice{

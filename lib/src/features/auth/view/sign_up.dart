@@ -8,11 +8,11 @@ import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/resources/string.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
 import 'package:ride_app/core/widgets/textFields.dart';
-import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_bloc.dart';
-import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_event.dart';
-import 'package:ride_app/features/authentication/presentation/bloc/auth_bloc/auth_state.dart';
-import 'package:ride_app/model/client_model.dart';
-import 'package:ride_app/pages/map_screen.dart';
+import 'package:ride_app/src/features/auth/bloc/auth_bloc.dart';
+import 'package:ride_app/src/features/auth/bloc/auth_event.dart';
+import 'package:ride_app/src/features/auth/bloc/auth_state.dart';
+import 'package:ride_app/src/features/auth/model/client_model.dart';
+import 'package:ride_app/src/features/hub/view/map_screen.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({super.key});

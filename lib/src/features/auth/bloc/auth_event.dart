@@ -1,7 +1,7 @@
 
-import 'package:ride_app/model/login_model.dart';
+import 'package:ride_app/core/model/login_model.dart';
 
-import '../../../../../model/client_model.dart';
+import '../model/client_model.dart';
 
 class AuthEvent{}
 final class AuthEventInitial extends AuthEvent{}

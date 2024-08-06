@@ -1,11 +1,11 @@
 import 'package:go_router/go_router.dart';
-import 'package:ride_app/pages/01_onboarding.dart';
-import 'package:ride_app/pages/02_omboarding.dart';
-import 'package:ride_app/pages/03_onboarding.dart';
-import 'package:ride_app/pages/home_page.dart';
-import 'package:ride_app/pages/set_password.dart';
-import 'package:ride_app/pages/sign_up.dart';
-import 'package:ride_app/pages/welcome.dart';
+import 'package:ride_app/src/features/onboarding/view/01_onboarding.dart';
+import 'package:ride_app/src/features/onboarding/view/02_omboarding.dart';
+import 'package:ride_app/src/features/onboarding/view/03_onboarding.dart';
+import 'package:ride_app/home_page.dart';
+import 'package:ride_app/src/features/auth/view/set_password.dart';
+import 'package:ride_app/src/features/auth/view/sign_up.dart';
+import 'package:ride_app/src/features/auth/view/welcome.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/oneonboarding',
