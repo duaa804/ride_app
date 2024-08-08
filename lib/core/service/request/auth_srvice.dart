@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:ride_app/core/service/coreService.dart';
 import 'package:ride_app/src/features/auth/model/client_model.dart';
-import 'package:ride_app/core/model/login_model.dart';
+import 'package:ride_app/src/features/auth/model/login_model.dart';
 
 import '../../model/handling_model.dart';
 import '../../confige/hive_init.dart';
@@ -38,7 +38,7 @@ class AuthServiceImp extends AuthService{
   Future<ResultModel> login(LoginModel user) async{
    try{
       response =await dio.post(baseUrl+"auth/authenticate",data: user.toMap());
-      if(response.statusCode==201){
+      if(response.statusCode==200){
         return DataSuccess();
       }else{
         return ErrorModel();

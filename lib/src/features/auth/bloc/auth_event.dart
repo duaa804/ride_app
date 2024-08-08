@@ -1,5 +1,5 @@
 
-import 'package:ride_app/core/model/login_model.dart';
+import 'package:ride_app/src/features/auth/model/login_model.dart';
 
 import '../model/client_model.dart';
 
