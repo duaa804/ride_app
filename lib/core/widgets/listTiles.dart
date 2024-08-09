@@ -313,7 +313,7 @@ Widget availableCar(
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: rideButtom(text: 'Ride Now', press:bookpress),
+              child: rideButtom(text: 'Ride Now', press:ridepress),
             )
           ],
          ),

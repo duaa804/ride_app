@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
 import 'package:ride_app/core/widgets/listTiles.dart';
+import 'package:ride_app/core/widgets/textFields.dart';
 
-class RequestRentPage extends StatelessWidget {
-  const RequestRentPage({super.key});
+class RequestRent26 extends StatelessWidget {
+  RequestRent26({super.key});
+  TextEditingController date = TextEditingController();
+  TextEditingController time = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,58 +63,13 @@ class RequestRentPage extends StatelessWidget {
                           carRview: '4.9 (531 reviews)',
                           image: 'assets/images/car.png')),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 20, left: 10),
-                  child: Text(
-                    'Charge',
-                    style: TextStyle(fontSize: 16),
-                  ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: signUpTextField(text: "Date", controller: date),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Mustang',
-                        style: TextStyle(
-                          fontSize: 12,
-                        ),
-                      ),
-                      Text(
-                        '/per hours',
-                        style: TextStyle(fontSize: 12, color: color.grey),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 330),
-                        child: Text(
-                          '\$200',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Vat',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                      Text(
-                        '(5%)',
-                        style: TextStyle(fontSize: 10, color: color.grey),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 400),
-                        child: Text(
-                          '\$20',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ),
-                    ],
-                  ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: signUpTextField(text: 'Time', controller: time),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: 20, left: 10, bottom: 10),
@@ -237,12 +196,12 @@ class RequestRentPage extends StatelessWidget {
                   child: importantButton(
                       text: 'Confirm Ride',
                       function: () {
-                        context.go('/thankyou');
+                        context.go('location');
                       }),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

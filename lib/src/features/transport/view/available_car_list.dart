@@ -58,7 +58,8 @@ class AvailableCarList extends StatelessWidget {
                 image: 'assets/images/greycar.png',
                 ridepress: () {
                   context.go('/cardetailes');
-                },bookpress: (){}),
+                },
+                bookpress: () {}),
           )
         ],
       ),

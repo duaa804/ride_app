@@ -128,7 +128,7 @@ class CarDetailes extends StatelessWidget {
                   rideButtom(
                       text: 'Ride Now',
                       press: () {
-                        context.go('/requestrent');
+                        context.go('/requestrent26');
                       })
                 ],
               ),

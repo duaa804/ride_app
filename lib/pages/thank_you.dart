@@ -30,10 +30,7 @@ class ThankYou extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 20),
               child: importantButton(text: 'confirm', function:() {}),
-            ),
-      
-        
-        
+            ),      
           ],
           
           ),

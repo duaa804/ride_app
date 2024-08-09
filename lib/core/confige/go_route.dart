@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:ride_app/pages/avaiable_car.dart';
 import 'package:ride_app/pages/select_transport.dart';
+import 'package:ride_app/pages/thank_you.dart';
 import 'package:ride_app/src/features/favourite/favourite_page.dart';
 import 'package:ride_app/src/features/onboarding/view/01_onboarding.dart';
 import 'package:ride_app/src/features/onboarding/view/02_omboarding.dart';
@@ -12,12 +13,13 @@ import 'package:ride_app/src/features/auth/view/welcome.dart';
 import 'package:ride_app/src/features/transport/view/available_car_list.dart';
 import 'package:ride_app/src/features/transport/view/car_detailes.dart';
 import 'package:ride_app/src/features/transport/view/request_rent.dart';
+import 'package:ride_app/src/features/transport/view/request_rent26.dart';
 import 'package:ride_app/src/features/wallet/view/add_amount_page.dart';
 import 'package:ride_app/src/features/wallet/view/bank.dart';
 import 'package:ride_app/src/features/wallet/view/wallet.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/cardetailes',
+  initialLocation: '/selecttransport',
   routes: [
          GoRoute(
     path: '/availablecar',
@@ -26,6 +28,10 @@ final GoRouter router = GoRouter(
          GoRoute(
     path: '/selecttransport',
     builder: (context, state) =>  const SelectTransport(),
+  ),
+       GoRoute(
+    path: '/thankyou',
+    builder: (context, state) =>  const ThankYou(),
   ),
        GoRoute(
     path: '/cardetailes',
@@ -79,6 +85,9 @@ final GoRouter router = GoRouter(
        GoRoute(
       path: '/log in',
       builder: (context, state) => const SetPasswrd()),
+            GoRoute(
+      path: '/requestrent26',
+      builder: (context, state) =>  RequestRent26()),
 
 
 ]);
