@@ -24,6 +24,7 @@ class StringManger {
   String wallet = 'Waallet';
   String offer = 'Offer';
   String profile = 'Profile';
+  String selecttrasport = 'Select transport';
   String selectyourtransport = 'Select your transport';
   String avaiablecarsforride = 'Avaiable cars for ride';
   String mustangShelbyGT = 'Mustang Shelby GT';
@@ -31,4 +32,10 @@ class StringManger {
   String confirmRide = 'Confirm Ride';
   String thankyou = 'Thank you';
    String signUpPage = 'Sign up with your email or\n phone number';
+   String CAR = 'Car';
+   String BIKE ='Bike';
+   String CYCLE ='Cycle';
+   String TAXI = 'Taxi';
+   String thankYouDescription = 'Your booking has been placed sent to\n                 0Md.Sharif Ahmed';
+   String Viewcarlist = 'View car list';
 }

@@ -128,7 +128,7 @@ Widget doneButton({required buttonName}) {
               color: buttonName == "Done" ? Colors.green : Colors.red)));
 }
 
-Widget OutLineButton({required text}) {
+Widget outLineButton({required text}) {
   return SizedBox(
     height: 54,
     width: 340,

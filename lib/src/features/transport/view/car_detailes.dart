@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/resources/string.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
@@ -106,27 +107,33 @@ class CarDetailes extends StatelessWidget {
                   icon: Icons.device_thermostat_outlined),
             ],
           ),
-        const Padding(
-           padding: EdgeInsets.all(8.0),
-           child: Text('Car features',style:TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
-         ),
-         bigContainer(firsttext: 'Model', lasttext: 'GT5000'),
-         bigContainer(firsttext: 'Capacity', lasttext: '760hp'),
-         bigContainer(firsttext: 'Color', lasttext: 'Red'),
-         bigContainer(firsttext: 'Fuel type', lasttext: 'Octane'),
-         bigContainer(firsttext: 'Fuel type', lasttext: 'Automatic'),
-         Padding(
-           padding: const EdgeInsets.all(10.0),
-           child: Padding(
-             padding: const EdgeInsets.only(top: 15,left: 8,right: 8),
-             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [booklaterButtom(text: 'Book later', press: (){}),
-              rideButtom(text: 'Ride Now', press: (){})],
-             ),
-           ),
-         ),
-
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('Car features',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+          ),
+          bigContainer(firsttext: 'Model', lasttext: 'GT5000'),
+          bigContainer(firsttext: 'Capacity', lasttext: '760hp'),
+          bigContainer(firsttext: 'Color', lasttext: 'Red'),
+          bigContainer(firsttext: 'Fuel type', lasttext: 'Octane'),
+          bigContainer(firsttext: 'Fuel type', lasttext: 'Automatic'),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 15, left: 8, right: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  booklaterButtom(text: 'Book later', press: () {}),
+                  rideButtom(
+                      text: 'Ride Now',
+                      press: () {
+                        context.go('/requestrent');
+                      })
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

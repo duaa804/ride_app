@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/resources/string.dart';
 import 'package:ride_app/core/widgets/listTiles.dart';
@@ -35,7 +36,8 @@ class AvailableCarList extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Text(
                 StringManger().avaiablecarsforride,
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -49,7 +51,14 @@ class AvailableCarList extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: availableCar(carname: 'BMW Cabrio', detailes: 'Automatic   |   3 seats   |   Octane', location: '800m (5mins away)', image: 'assets/images/greycar.png'),
+            child: availableCar(
+                carname: 'BMW Cabrio',
+                detailes: 'Automatic   |   3 seats   |   Octane',
+                location: '800m (5mins away)',
+                image: 'assets/images/greycar.png',
+                ridepress: () {
+                  context.go('/cardetailes');
+                },bookpress: (){}),
           )
         ],
       ),

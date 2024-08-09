@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:ride_app/pages/avaiable_car.dart';
+import 'package:ride_app/pages/select_transport.dart';
 import 'package:ride_app/src/features/favourite/favourite_page.dart';
 import 'package:ride_app/src/features/onboarding/view/01_onboarding.dart';
 import 'package:ride_app/src/features/onboarding/view/02_omboarding.dart';
@@ -17,6 +19,14 @@ import 'package:ride_app/src/features/wallet/view/wallet.dart';
 final GoRouter router = GoRouter(
   initialLocation: '/cardetailes',
   routes: [
+         GoRoute(
+    path: '/availablecar',
+    builder: (context, state) =>  const AvaiableCar(),
+  ),
+         GoRoute(
+    path: '/selecttransport',
+    builder: (context, state) =>  const SelectTransport(),
+  ),
        GoRoute(
     path: '/cardetailes',
     builder: (context, state) =>  const CarDetailes(),

@@ -271,7 +271,8 @@ Widget languageListTile({required language, required flagImage}) {
 }
 
 Widget availableCar(
-    {required carname, required detailes, required location, required image}) {
+    {required carname, required detailes, required location, required image,
+    required bookpress,required ridepress }) {
   return Card(
     color: color.blue,
     child: Column(
@@ -308,11 +309,11 @@ Widget availableCar(
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: booklaterButtom(text: 'Book Later', press: (){}),
+              child: booklaterButtom(text: 'Book Later', press: bookpress),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: rideButtom(text: 'Ride Now', press: (){}),
+              child: rideButtom(text: 'Ride Now', press:bookpress),
             )
           ],
          ),
