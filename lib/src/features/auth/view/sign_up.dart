@@ -78,7 +78,7 @@ class _SignUpState extends State<SignUp> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: signUpTextField(text: 'Password', controller: password),
+              child: passwordField(text: 'Password', controller: password),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -89,24 +89,7 @@ class _SignUpState extends State<SignUp> {
               padding: const EdgeInsets.all(8.0),
               child: IntlPhoneField(
                 controller: phone,
-                decoration: const InputDecoration(
-
-                    // prefix: Row(
-                    //     children: [
-                    //       Container(
-                    //         width: 15,
-                    //         height: 10,
-                    //         decoration: BoxDecoration(
-                    //             borderRadius: BorderRadius.circular(2),
-                    //             color: color.primaryColor),
-                    //         child: const Icon(
-                    //           Icons.circle,
-                    //           color: Colors.red,
-                    //           size: 5,
-                    //         ),
-                    //       ),
-                    //       const Icon(Icons.arrow_drop_down)
-                    //     ],),
+                decoration: const InputDecoration(                  
                     hintText: 'Your mobile number',
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: color.greySubtitle))),
@@ -207,7 +190,7 @@ class _SignUpState extends State<SignUp> {
                           listener: (context, state) {
                             if (state is FailedToRegister) {
                               ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
+                                  .showSnackBar(const SnackBar(
                                 content:
                                     Text("Sign Up is Fiald, Please Try again"),
                                 backgroundColor: Colors.red,
@@ -255,9 +238,9 @@ class _SignUpState extends State<SignUp> {
                                                 confirmpassword.text)));
                                   });
                             } else {
-                              return CupertinoActivityIndicator();
+                              return const Center(child: CupertinoActivityIndicator());
                             }
-                            return SizedBox();
+                            return  const SizedBox();
                           },
                         )),
                   ),
