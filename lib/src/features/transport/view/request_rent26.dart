@@ -196,7 +196,7 @@ class RequestRent26 extends StatelessWidget {
                   child: importantButton(
                       text: 'Confirm Ride',
                       function: () {
-                        context.go('location');
+                        context.go('/thankyou');
                       }),
                 ),
               ],
