@@ -36,5 +36,6 @@ class StringManger {
    String BIKE ='Bike';
    String CYCLE ='Cycle';
    String TAXI = 'Taxi';
-   String thankYouDescription = 'Your booking has been placed sent to\n0Md.Sharif Ahmed';
+   String thankYouDescription = 'Your booking has been placed sent to\n                 0Md.Sharif Ahmed';
+   String Viewcarlist = 'View car list';
 }
