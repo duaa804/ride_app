@@ -90,7 +90,7 @@ class AvailableCarList extends StatelessWidget {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => CarDetailes(),
+                                          builder: (context) => CarDetailes(hubContentModel: state.hubContentModel[index],),
                                         ));
                                   });
                                 })),

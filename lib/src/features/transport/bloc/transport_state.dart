@@ -2,7 +2,7 @@
 
 import 'package:ride_app/src/features/transport/model/bicycle_model.dart';
 
-import '../../hub/model/hub_content_model.dart';
+import '../model/hub_content_model.dart';
 
 class TransportState{}
 final class TransportInitialState extends TransportState{}

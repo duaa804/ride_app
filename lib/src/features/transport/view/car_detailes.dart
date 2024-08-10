@@ -6,15 +6,16 @@ import 'package:ride_app/core/widgets/buttons.dart';
 import 'package:ride_app/core/widgets/container.dart';
 import 'package:ride_app/src/features/transport/bloc/transport_bloc.dart';
 import 'package:ride_app/src/features/transport/bloc/transport_event.dart';
-import 'package:ride_app/src/features/hub/model/hub_content_model.dart';
+import 'package:ride_app/src/features/transport/model/hub_content_model.dart';
 import 'package:ride_app/src/features/transport/model/bicycle_model.dart';
 import 'package:ride_app/src/features/transport/view/available_car_list.dart';
+import 'package:ride_app/src/features/transport/view/request_rent.dart';
 
 import '../bloc/transport_state.dart';
 
  //BicycleModel? _filterBicycle;
 class CarDetailes extends StatelessWidget {
-  CarDetailes({super.key, this.hubContentModel});
+  CarDetailes({super.key,  this.hubContentModel});
   final HubContentModel? hubContentModel;
 
   @override
@@ -115,6 +116,7 @@ class CarDetailes extends StatelessWidget {
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image:
+                                    //Image.network(state.bicycleDetails[0].photoPath).image,
                                         Image.asset('assets/images/car.png').image,
                                     fit: BoxFit.contain)),
                           ),
@@ -161,14 +163,14 @@ class CarDetailes extends StatelessWidget {
                     ),
                     bigContainer(firsttext: 'Model', lasttext: 'GT5000'),
                     bigContainer(
-                        firsttext: 'Size', lasttext: hubContentModel!.size),
+                        firsttext: 'Size', lasttext: "${hubContentModel!.size}"),
                     bigContainer(firsttext: 'Color', lasttext: 'Red'),
                     bigContainer(
                         firsttext: 'Price Model',
                         lasttext: hubContentModel!.model_price["model"]),
                     bigContainer(
                         firsttext: 'Price',
-                        lasttext: hubContentModel!.model_price["price"]),
+                        lasttext: "${hubContentModel!.model_price["price"]}"),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Padding(
@@ -177,11 +179,19 @@ class CarDetailes extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            booklaterButtom(text: 'Book later', press: () {}),
+                            booklaterButtom(text: 'Book later', press: () {
+                            }),
                             rideButtom(
                                 text: 'Ride Now',
                                 press: () {
-                                  context.go('/requestrent');
+                                  WidgetsBinding.instance
+                                      .addPostFrameCallback((timeStamp) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => RequestRentPage(hubContentModel: hubContentModel,),
+                                        ));
+                                  });
                                 })
                           ],
                         ),
@@ -189,8 +199,7 @@ class CarDetailes extends StatelessWidget {
                     ),
                   ],
                 );
-              } else {
-                
+              } else {                
                 return CircularProgressIndicator();
               }
             },

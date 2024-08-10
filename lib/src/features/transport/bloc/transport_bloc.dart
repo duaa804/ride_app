@@ -7,7 +7,7 @@ import 'package:ride_app/src/features/transport/model/bicycle_model.dart';
 import 'package:ride_app/src/features/transport/bloc/transport_event.dart';
 import 'package:ride_app/src/features/transport/bloc/transport_state.dart';
 
-import '../../hub/model/hub_content_model.dart';
+import '../model/hub_content_model.dart';
 
 class TransportBloc extends Bloc<TransportEvent,TransportState>{
   TransportBloc():super(TransportInitialState()){

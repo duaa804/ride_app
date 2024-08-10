@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:ride_app/src/features/hub/model/reservation_model.dart';
+import 'package:ride_app/src/features/transport/model/reservation_model.dart';
 import 'package:ride_app/core/service/coreService.dart';
 
 import '../confige/header.dart';

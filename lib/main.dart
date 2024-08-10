@@ -12,6 +12,7 @@ import 'core/service/bicycles_service.dart';
 import 'core/service/hubs_service.dart';
 import 'src/features/transport/view/available_car_list.dart';
 import 'src/features/transport/view/car_detailes.dart';
+import 'src/features/transport/view/request_rent.dart';
 
 void main() {
   //openHive();
