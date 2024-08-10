@@ -37,7 +37,7 @@ final GoRouter router = GoRouter(
   ),
       GoRoute(
     path: '/requestrent',
-    builder: (context, state) =>  gi RequestRentPage(),
+    builder: (context, state) =>  RequestRentPage(),
   ),
          GoRoute(
     path: '/favourite',
