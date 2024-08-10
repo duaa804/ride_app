@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
 import 'package:ride_app/core/widgets/container.dart';
 import 'package:ride_app/src/features/transport/bloc/transport_bloc.dart';
 import 'package:ride_app/src/features/transport/bloc/transport_event.dart';
 import 'package:ride_app/src/features/transport/model/hub_content_model.dart';
-import 'package:ride_app/src/features/transport/model/bicycle_model.dart';
 import 'package:ride_app/src/features/transport/view/available_car_list.dart';
 import 'package:ride_app/src/features/transport/view/request_rent.dart';
 
@@ -200,7 +198,7 @@ class CarDetailes extends StatelessWidget {
                   ],
                 );
               } else {                
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator());
               }
             },
           ),

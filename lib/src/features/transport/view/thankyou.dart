@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/assets.dart';
 import 'package:ride_app/core/resources/string.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
@@ -29,11 +30,10 @@ class ThankYou extends StatelessWidget {
             
             Padding(
               padding: const EdgeInsets.only(bottom: 20),
-              child: importantButton(text: 'confirm', function:() {}),
-            ),
-      
-        
-        
+              child: importantButton(text: 'confirm', function:() {
+             
+              }),
+            ),      
           ],
           
           ),

@@ -86,31 +86,10 @@ class BankPage extends StatelessWidget {
                                     ),
                                   ]),
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Add Success',
-                                    style: TextStyle(fontSize: 22),
-                                  ),
-                                ),
-                                const Text(
-                                  'Your money has been add successfully ',
-                                  style: TextStyle(
-                                      fontSize: 12, color: color.greySubtitle),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.only(top: 10),
-                                  child: Text(
-                                    'Amount',
-                                    style: TextStyle(fontSize: 12),
-                                  ),
-                                ),
-                                const Text(
-                                  '\$220',
-                                  style: TextStyle(
-                                      fontSize: 34,
-                                      color: color.BlackTitlePage),
-                                ),
+                            
+                           
+                           
+                              
                               ],
                             ),
                           ));
