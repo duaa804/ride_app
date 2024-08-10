@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ride_app/core/service/coreService.dart';
-import 'package:ride_app/src/features/hub/model/bicycle_model.dart';
+import 'package:ride_app/src/features/transport/model/bicycle_model.dart';
 
 import '../confige/header.dart';
 import '../model/handling_model.dart';
@@ -36,10 +36,10 @@ class BicyclesServiceImp extends BicyclesService{
      try{
       response =await dio.get(baseUrl+"bicycle/bicycles-by-category?category=Mountain_bikes",options:HeaderConfig.getHeader());
       List data=response.data["body"];
-      List bicycle =List.generate(data.length, (index)=>BicycleModel.fromMap(data[index]));
+      List<BicycleModel> bicycle =List.generate(data.length, (index)=>BicycleModel.fromMap(data[index]));
       print(bicycle);
       if(response.statusCode==200){
-        return ListOf(data:bicycle);
+        return ListOf(data: bicycle);
       }else{
         return ErrorModel();
       }

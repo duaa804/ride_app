@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:ride_app/core/service/coreService.dart';
 import 'package:ride_app/src/features/hub/model/hub_content_model.dart';
-import 'package:ride_app/src/features/hub/model/hub_model.dart';
+import 'package:ride_app/src/features/transport/model/hub_model.dart';
 
 import '../confige/header.dart';
 import '../model/handling_model.dart';
@@ -61,7 +61,7 @@ class HubsServiceImp extends HubsService{
    try{
       response =await dio.get(baseUrl+"hub-content/1?bicycleCategory=Mountain_bikes",options:HeaderConfig.getHeader());
       var data=response.data["body"]["bicycleList"];
-      List bicyclesHub=List.generate(data.length,(index)=>HubContentModel.fromMap(data[index]));
+      List<HubContentModel> bicyclesHub=List.generate(data.length,(index)=>HubContentModel.fromMap(data[index]));
       print(data);
       print(bicyclesHub);
       if(response.statusCode==200){

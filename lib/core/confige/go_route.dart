@@ -29,7 +29,7 @@ final GoRouter router = GoRouter(
   ),
        GoRoute(
     path: '/cardetailes',
-    builder: (context, state) =>  const CarDetailes(),
+    builder: (context, state) =>   CarDetailes(),
   ),
       GoRoute(
     path: '/availablecarlist',
