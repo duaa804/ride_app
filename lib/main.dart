@@ -49,14 +49,13 @@
 //     );
 //   }
 // }
-import 'package:flutter/material.dart';
-import 'package:ride_app/pages/avaiable_car.dart';
-import 'package:ride_app/pages/select_transport.dart';
 
+import 'package:flutter/material.dart';
+import 'package:ride_app/core/service/hubs_service.dart';
+//import 'package:ride_app/src/features/hub/view/map_screen.dart';
 
 void main (){
-    runApp(MyApp());
-
+  runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -64,7 +63,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AvaiableCar(),
+      home:Scaffold(body: ElevatedButton(
+        onPressed: (){
+      HubsServiceImp().getAllHubs();
+
+        }
+      , child: Text('fhghlk')),
+      ),
     );
   }
 }
