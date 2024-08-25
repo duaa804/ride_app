@@ -6,6 +6,7 @@ import 'package:ride_app/src/features/auth/view/set_password.dart';
 
 final formkey = GlobalKey<FormState>();
 RegExp pass_valid = RegExp(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)');
+bool abscureText = true;
 bool validatePassword(String pass) {
   String password = pass.trim();
   if (pass_valid.hasMatch(password)) {
@@ -99,7 +100,7 @@ Widget addressTextField(
 Widget signUpTextField(
     {required text, required TextEditingController controller}) {
   return SizedBox(
-    width: 336,
+    width: double.infinity,
     height: 54,
     child: TextField(
       controller: controller,
@@ -182,10 +183,72 @@ Widget passwordField(
         controller: controller,
         decoration: InputDecoration(
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: color.greySubtitle),
+            borderSide: const BorderSide(color: color.greySubtitle),
             borderRadius: BorderRadius.circular(8),
           ),
           hintText: text,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget settingContainer({required text, required function}) {
+  return SizedBox(
+      width: double.infinity,
+      height: 51,
+      child: Container(
+        width: double.infinity,
+        height: 51,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Text(
+                text,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: InkWell(
+                onTap: function,
+                child: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 15,
+                  color: Colors.black,
+                ),
+              ),
+            )
+          ],
+        ),
+        decoration: BoxDecoration(
+          border: Border.all(color: color.primaryColor),
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ));
+}
+
+Widget changePasswordTextfield(
+    {required text, required function, required controller}) {
+  return TextField(
+    controller: controller,
+    obscureText: abscureText,
+    decoration: InputDecoration(
+      suffixIcon: InkWell(
+          onTap: function,
+          child: Icon(
+            abscureText ? Icons.visibility_off : Icons.visibility,
+            color: Colors.grey,
+          )),
+      hintText: text,
+      hintStyle: const TextStyle(
+          fontSize: 16, fontWeight: FontWeight.w500, color: color.greySubtitle),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+        borderSide: const BorderSide(
+          color: color.greyDescription,
         ),
       ),
     ),
