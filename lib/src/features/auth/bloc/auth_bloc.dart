@@ -5,7 +5,7 @@ import 'package:ride_app/src/features/auth/bloc/auth_state.dart';
 
 import 'package:ride_app/core/model/handling_model.dart';
 
-import '../../../../core/service/request/auth_srvice.dart';
+import '../../../../core/service/auth_srvice.dart';
 
 class AuthBloc extends Bloc<AuthEvent,AuthState>{
   AuthBloc():super(AuthInitialState()){

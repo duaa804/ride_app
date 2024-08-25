@@ -51,7 +51,7 @@ final GoRouter router = GoRouter(
   ),
        GoRoute(
     path: '/cardetailes',
-    builder: (context, state) =>  const CarDetailes(),
+    builder: (context, state) =>   CarDetailes(),
   ),
       GoRoute(
     path: '/availablecarlist',
@@ -59,7 +59,7 @@ final GoRouter router = GoRouter(
   ),
       GoRoute(
     path: '/requestrent',
-    builder: (context, state) =>  const RequestRentPage(),
+    builder: (context, state) =>  RequestRentPage(),
   ),
          GoRoute(
     path: '/favourite',

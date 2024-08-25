@@ -3,10 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
 import 'package:ride_app/core/widgets/listTiles.dart';
+import 'package:ride_app/src/features/transport/model/hub_content_model.dart';
 
 class RequestRentPage extends StatelessWidget {
-  const RequestRentPage({super.key});
-
+   RequestRentPage({super.key, this.hubContentModel});
+ final HubContentModel? hubContentModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +56,7 @@ class RequestRentPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(3)),
                       color: color.blue,
                       child: reviwCarListTile(
-                          carName: 'Mustang Shelby GT',
+                          carName: hubContentModel!.type,
                           carRview: '4.9 (531 reviews)',
                           image: 'assets/images/car.png')),
                 ),

@@ -9,7 +9,7 @@ class HeaderConfig{
   if(useToken){
     return Options(
      headers: {'accept':' */*' ,
-     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5ODc2MjMwMjc2IiwiaWF0IjoxNzI0NDE4MzA3LCJleHAiOjE3MjQ1MDQ3MDd9.q64xG8NNeqAgtyQqWngDuEUuC8ejXU6_88IT883IR4g'}
+     'Authorization': 'Bearer  '}
      //'Authorization': 'Bearer ${box!.get('token')} '}
     );
   }else{
