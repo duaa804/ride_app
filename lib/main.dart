@@ -51,6 +51,8 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:ride_app/core/confige/go_route.dart';
+import 'package:ride_app/src/features/auth/view/sign_up.dart';
+import 'package:ride_app/src/features/location/enable_location.dart';
 import 'core/confige/hive_init.dart';
 
 void main() {
@@ -67,11 +69,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
+    return MaterialApp(
+      home:EnableLocation(),
+    );
+    // return MaterialApp.router(
+    //   routerConfig: router,
+    //   debugShowCheckedModeBanner: false,
                   
       
-    );
+    // );
   }
 }

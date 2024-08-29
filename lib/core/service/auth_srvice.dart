@@ -20,6 +20,7 @@ class AuthServiceImp extends AuthService {
       String message = response.data["message"];
       String token = response.data["body"]["token"];
       await box!.put('token', token);
+      print(token);
       print(message);
       if (response.statusCode == 200) {
         return DataSuccess();

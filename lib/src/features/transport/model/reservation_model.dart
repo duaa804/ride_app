@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:ride_app/core/model/handling_model.dart';
 
-class ReservationModel extends ResultModel {
+class ReservationModel{
   int bicycleId;
   int fromHubId;
   int toHubId;
