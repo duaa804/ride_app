@@ -10,4 +10,5 @@ class Assets{
   static const String frame ='$baseAssetImage/Frame.png';
   static const String taxi ='$baseAssetImage/Taxi.png';
   static const String thankYou ='$baseAssetImage/thankYou.png';
+ 
 }

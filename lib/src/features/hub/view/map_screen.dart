@@ -1,172 +1,4 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_map/flutter_map.dart';
-// import 'package:latlong2/latlong.dart';
-// import 'package:ride_app/src/features/hub/model/hub_model.dart';
-// class MapScreen extends StatefulWidget {
-//   const MapScreen({super.key});
 
-//   @override
-//   State<MapScreen> createState() => _MapScreenState();
-// }
-//   late final markers;
-//     void fetchHubs(List<HubModel> data) {
-//     final markers = data.map<Marker>((hubs) {
-//       return getHubMarker(hubs);
-//     }).toList();}
-    
-// Marker getHubMarker(HubModel hubs) {
-//     return Marker(
-//       point: LatLng(hubs.latitude, hubs.longitude),
-//       child: Builder(builder: (context) {
-//         return Container(
-//           child: Column(
-//             children: [
-//               InkWell(
-//                 child: Icon(
-//                   Icons.location_on,
-//                   color: Colors.red,
-//                   //size: screenWidth * 0.03,
-//                 ),
-//                 onTap: () {
-//                   Navigator.pushNamed(context, '/Screen', arguments: hubs);
-//                 },
-//               ),
-//               Text(
-//                 hubs.name,
-//                 style: TextStyle(
-//                   fontWeight: FontWeight.w400,
-//                  // fontSize: screenWidth * 0.01,
-//                   //color: ColorManager.titleNotificationColor,
-//                 ),
-//               ),
-//             ],
-//           ),
-//         );
-//       }),
-//     );
-//   }
-  
-
-// class _MapScreenState extends State<MapScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         body: FlutterMap(
-//           options: MapOptions(
-//             initialCenter: LatLng(33.5093553, 36.2939167),
-          
-//             initialZoom: 20,
-//             onTap: (_,latlng){
-              
-             
-//               }
-//           ),
-//           children: [
-//             TileLayer(
-//               urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-//               userAgentPackageName: 'com.example.app',
-//             ),
-         
-//             MarkerLayer(
-//               markers: markers,
-//             ),
-//             RichAttributionWidget(
-//               attributions: [
-//                 TextSourceAttribution(
-//                   'OpenStreetMap contributors',
-//                   onTap: () {},
-//                 ),
-//               ],
-//             ),
-//           ],
-//         ),
-      
-//     );
-//   }
-
-// }
-
-
-
-// // List<LatLng> tappedPoints = [
-// //   const LatLng(51.5,-0.09),
-// //   const LatLng(51.506678,-0.097124) 
-// // ];
-import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
-import 'package:ride_app/core/model/handling_model.dart';
-import 'package:ride_app/core/service/hubs_service.dart';
-//import 'package:ride_app/src/features/hub/model/hub_model.dart';
-
-class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
-
-  @override
-  State<MapScreen> createState() => _MapScreenState();
-}
-
-class _MapScreenState extends State<MapScreen> {
-  List<Marker> hubMarkers = [];
-
-  @override
-  void initState() {
-    super.initState();
-    fetchHubs();
-  }
-//List<HubModel> data
-  Future<void> fetchHubs() async {
-    HubsServiceImp hubsService = HubsServiceImp();
-    var result = await hubsService.getAllHubs();
-    if (result is ListOf) {
-      setState(() {
-        hubMarkers = result.data.map<Marker>((hub) {
-          return Marker(
-            point: LatLng(hub.latitude, hub.longitude),
-            width: 80,
-            height: 80,
-            child: Icon(Icons.location_on, size: 60,color: Colors.red,),
-          );
-        }).toList();
-        print(hubMarkers);
-      });
-    }
-    else{}
-    
-    
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: FlutterMap(
-        options: MapOptions(
-          initialCenter: LatLng(33.5093553, 36.2939167),
-          initialZoom: 10,
-        ),
-        children: [
-          TileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            userAgentPackageName: 'com.example.app',
-          ),
-          MarkerLayer(
-            markers: hubMarkers,
-          ),
-          RichAttributionWidget(
-            attributions: [
-              TextSourceAttribution(
-                'OpenStreetMap contributors',
-                onTap: () {},
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// // 
 // import 'package:flutter/material.dart';
 // import 'package:flutter_map/flutter_map.dart';
 // import 'package:latlong2/latlong.dart';
@@ -532,3 +364,90 @@ class _MapScreenState extends State<MapScreen> {
 //     );
 //   }
 // }
+
+
+import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:ride_app/src/features/hub/model/hub_model.dart';
+
+class MapScreen extends StatefulWidget {
+  const MapScreen({super.key});
+
+  @override
+  State<MapScreen> createState() => _MapScreenState();
+}
+
+class _MapScreenState extends State<MapScreen> {
+  List<Marker> markers = [];
+
+  void fetchHubs(List<HubModel> data) {
+    setState(() {
+      markers = data.map<Marker>((hubs) {
+        return getHubMarker(hubs);
+      }).toList();
+    });
+    print('jhug');
+  }
+
+  Marker getHubMarker(HubModel hubs) {
+    return Marker(
+      point: LatLng(hubs.latitude, hubs.longitude),
+      child: Builder(builder: (context) {
+        return Container(
+          child: Column(
+            children: [
+              InkWell(
+                child: Icon(
+                  Icons.location_on,
+                  color: Colors.green,
+                ),
+                onTap: () {
+                },
+              ),
+              Text(
+                hubs.name,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+            
+          ),
+        );
+      }),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FlutterMap(
+        options: MapOptions(
+          initialCenter: LatLng(33.5093553, 36.2939167),
+          initialZoom: 15,
+          onTap: (_, latlng) {},
+        ),
+        children: [
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            userAgentPackageName: 'com.example.app',
+          ),
+          MarkerLayer(
+            markers: markers,
+            
+          ),
+          
+          RichAttributionWidget(
+            attributions: [
+              TextSourceAttribution(
+                'OpenStreetMap contributors',
+                onTap: () {},
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

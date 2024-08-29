@@ -3,8 +3,8 @@ import 'package:ride_app/core/service/coreService.dart';
 import 'package:ride_app/src/features/auth/model/client_model.dart';
 import 'package:ride_app/src/features/auth/model/login_model.dart';
 
-import '../../model/handling_model.dart';
-import '../../confige/hive_init.dart';
+import '../model/handling_model.dart';
+import '../confige/hive_init.dart';
 
 abstract class AuthService extends Coreservice{
   Future<ResultModel> register(ClientModel client);
