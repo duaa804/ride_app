@@ -69,7 +69,7 @@ class Wallet extends StatelessWidget {
                           color: color.blue,
                           border: Border.all(color: color.darkGreen),
                         ),
-                        child: Column(
+                        child:const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -102,15 +102,17 @@ class Wallet extends StatelessWidget {
                       color: color.blue,
                       border: Border.all(color: color.darkGreen),
                     ),
-                    child: const Column(
+                    child:  Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "\$200",
-                          style: TextStyle(
+                 '${box!.get('amount')}',
+
+                          // "\$200",
+                          style:const TextStyle(
                               fontSize: 28, fontWeight: FontWeight.w500),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(top: 10),
                           child: Text(
                             "Total Expend",
@@ -166,19 +168,22 @@ class Wallet extends StatelessWidget {
                           if (state is SuccessGetValidCode) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text('${box!.get('code')}'),
-                              backgroundColor: Colors.red,
+                              backgroundColor: color.primaryColor,
                             ));
                           }
                         },
                         builder: (context, state) {
                           if (state is GetvalidCodeInitial) {
-                            return importantButton(
-                                text: 'get code to add money',
-                                function: () {
-                                  context
-                                      .read<GetvalidCodeBloc>()
-                                      .add(GetvalidCode());
-                                });
+                            return Padding(
+                              padding: const EdgeInsets.all(30.0),
+                              child: importantButton(
+                                  text: 'get code to add money',
+                                  function: () {
+                                    context
+                                        .read<GetvalidCodeBloc>()
+                                        .add(GetvalidCode());
+                                  }),
+                            );
                           } else if (state is SuccessGetValidCode) {
                             return Container(
                               child: Icon(Icons.check),
@@ -186,13 +191,16 @@ class Wallet extends StatelessWidget {
                           } else {
                            return  Column(
                               children: [
-                                importantButton(
-                                    text: 'get code to add money',
-                                    function: () {
-                                      context
-                                          .read<GetvalidCodeBloc>()
-                                          .add(GetvalidCode());
-                                    }),
+                                Padding(
+                                  padding: const EdgeInsets.all(30.0),
+                                  child: importantButton(
+                                      text: 'get code to add money',
+                                      function: () {
+                                        context
+                                            .read<GetvalidCodeBloc>()
+                                            .add(GetvalidCode());
+                                      }),
+                                ),
                                 Container(
                                   width: 150,
                                   height: 50,

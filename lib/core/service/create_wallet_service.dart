@@ -21,16 +21,16 @@ class CreateWalletServiceImp extends CreateWalletService {
           data: newwallet.toMap(), options: HeaderConfig.getHeader());
       print(response.statusCode);
       if (response.statusCode == 201) {
-        print(response.data['id']);
-        print(response.data['balance']);
-        print(response.data['bankAccount']);
+        int balance = response.data['body']['balance'];
+        print(balance);
+        await box!.put('amount', balance);
         return DataSuccess();
       } else {
         return ErrorModel();
       }
     } on DioException catch (e) {
       print(e.message);
-      
+
       return ExceptionModel(message: e.message);
     }
   }
@@ -58,7 +58,7 @@ class CreateWalletServiceImp extends CreateWalletService {
     try {
       response = await dio.put(baseUrl + 'wallet',
           data: addMoney.toMap(), options: HeaderConfig.getHeader());
-      if (response.statusCode == 200) {
+      if (response.statusCode == 202) {
         return DataSuccess();
       } else
         return ErrorModel();
@@ -74,7 +74,12 @@ class CreateWalletServiceImp extends CreateWalletService {
       response = await dio.get(baseUrl + 'wallet/All-valid-codes',
           options: HeaderConfig.getHeader());
       if (response.statusCode == 200) {
-        String code = response.data['code'];
+        print(response.statusCode);
+        List info = response.data['body'];
+        String code = info[0]['code'];
+      //  int amount = info[0]['amount'];
+        // print(amount);
+        // await box!.put('amount', amount);
         print(code);
         await box!.put('code', code);
         return DataSuccess();

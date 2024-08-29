@@ -187,6 +187,7 @@ Widget passwordField(
             borderRadius: BorderRadius.circular(8),
           ),
           hintText: text,
+          hintStyle:const TextStyle(color: color.greyDescription,fontSize: 12)
         ),
       ),
     ),

@@ -3,6 +3,7 @@ import 'dart:js_interop';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ride_app/core/confige/hive_init.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
 import 'package:ride_app/core/widgets/textFields.dart';
@@ -224,6 +225,14 @@ class AddAmountPage extends StatelessWidget {
                                     ),
                                   ]),
                                 ),
+                               const Text("Add Success",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),),
+                              const Padding(
+                                 padding:  EdgeInsets.all(8.0),
+                                 child:  Text("Your money has been add successfully ",style: TextStyle(color: color.greySubtitle,fontSize: 12,fontWeight: FontWeight.w500),),
+                               ),
+                               const Text("Amount",style: TextStyle(fontSize: 12,fontWeight: FontWeight.w500),),
+                                Text('${box!.get('amount')}',
+style:const TextStyle(fontSize: 22,fontWeight: FontWeight.w500),)
                               ],
                             ),
                        ));

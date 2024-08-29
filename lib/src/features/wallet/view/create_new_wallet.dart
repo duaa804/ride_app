@@ -42,16 +42,16 @@ class CreateNewWallet extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: signUpTextField(text: 'Enter your code', controller: code),
+            child: passwordField(text: 'Enter your code', controller: code),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: signUpTextField(
+            child: passwordField(
                 text: 'Confirm your code', controller: confirmCode),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: signUpTextField(
+            child: passwordField(
                 text: 'Enter your bank account', controller: bankAccount),
           ),
           BlocProvider(

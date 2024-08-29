@@ -22,7 +22,7 @@ import 'package:ride_app/src/features/wallet/view/create_new_wallet.dart';
 import 'package:ride_app/src/features/wallet/view/wallet.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/signup',
+  initialLocation: '/createnewwallet',
   routes: [
          GoRoute(
     path: '/availablecar',
