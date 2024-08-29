@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hive/hive.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:location/location.dart';
+import 'package:ride_app/core/confige/hive_init.dart';
+import 'package:ride_app/src/features/auth/view/welcome.dart';
+//import 'package:location/location.dart';
 //import 'package:ride_app/src/features/hub/view/map_screen.dart';
 
 class EnableLocation extends StatefulWidget {
@@ -14,6 +18,54 @@ class EnableLocation extends StatefulWidget {
   final MapController mapController = MapController();
 
 class _EnableLocationState extends State<EnableLocation> {
+  String locationMessage="not defind";
+  late String lat;
+  late String long;
+  late double dlat;
+  late double dlong;
+
+  Future<Position> getLocation() async{
+    bool serviceEnabled=await Geolocator.isLocationServiceEnabled();
+    if(!serviceEnabled){
+      return Future.error('Location services are disabled.');
+    }
+
+    LocationPermission permission=await Geolocator.checkPermission();
+    if(permission==LocationPermission.denied){
+      permission=await Geolocator.requestPermission();
+      if(permission ==LocationPermission.denied){
+        return Future.error('Location permissions are deined');
+      }
+    }
+
+    if(permission==LocationPermission.deniedForever){
+      return Future.error('Location permissions are deined,we cannot request');
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+
+
+
+   void liveLocation() {
+    LocationSettings locationSettings=const LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 100,
+    );
+
+    Geolocator.getPositionStream(locationSettings: locationSettings)
+        .listen((Position position){
+          lat=position.latitude.toString();
+          long=position.longitude.toString();
+          print(lat);
+          print(long);
+          setState((){
+            locationMessage='Latitude: $lat , longitude: $long'; 
+            print(locationMessage);
+          });
+        });
+
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +104,7 @@ class _EnableLocationState extends State<EnableLocation> {
               markers: [
                 Marker(
                   point: LatLng(33.5093553, 36.2939167),
+                  //point: LatLng(dlat, dlong),
                   width: 80,
                   height: 80,
                   child: Icon(Icons.pin_drop,size: 60,),
@@ -91,18 +144,36 @@ class _EnableLocationState extends State<EnableLocation> {
                 actions: [
                   TextButton(
                     onPressed: () async {
-                      LocationData locationData = await location.getLocation();
-                      var box = Hive.box('locationBox');
-                      box.put('latitude', locationData.latitude);
-                      box.put('longitude', locationData.longitude);
-                      print('Location saved: ${locationData.latitude}, ${locationData.longitude}');
-                      mapController.move(LatLng(locationData.latitude!, locationData.longitude!), 14.0);
-                    },
+                      getLocation().then((value){
+                        lat='${value.latitude}';
+                        long='${value.longitude}';
+                        dlat=double.parse(lat);
+                        dlong=double.parse(long);
+                        box2!.put('latitude', lat);
+                        box2!.put('longitude',long);
+                        print(lat);
+                        print(long);
+                        setState(() {
+                          locationMessage='Latitude: $lat , longitude: $long';                
+                        });
+                        print(locationMessage);
+                        liveLocation();
+                        //context.go('/welcome');
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>WelcomeScreen()));
+                      });
+                      //LocationData locationData = await location.getLocation();
+                    //   var box = Hive.box('locationBox');
+                    //   box.put('latitude', locationData.latitude);
+                    //   box.put('longitude', locationData.longitude);
+                    //   print('Location saved: ${locationData.latitude}, ${locationData.longitude}');
+                    //   mapController.move(LatLng(locationData.latitude!, locationData.longitude!), 14.0);
+                     },
                     child: Text('Use my location'),
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
+
                     },
                     child: Text('Skip for now'),
                   ),
@@ -115,9 +186,6 @@ class _EnableLocationState extends State<EnableLocation> {
   }
 }
 
-//class _mapController {
-//}
 
-class location {
-  static getLocation() {}
-}
+
+

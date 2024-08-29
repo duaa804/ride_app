@@ -2,8 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:ride_app/src/features/transport/model/reservation_model.dart';
 import 'package:ride_app/core/service/coreService.dart';
 
-import '../confige/header.dart';
-import '../model/handling_model.dart';
+import '../../../confige/header.dart';
+import '../../../model/handling_model.dart';
+
+ import 'package:dio/dio.dart';
 
 abstract class ReservationService extends Coreservice{
   Future<ResultModel>createReservation(ReservationModel reservationModel);
@@ -49,3 +51,29 @@ class ReservationImp extends ReservationService{
 
 }
  
+
+abstract class Service {
+  Dio dio = Dio();
+  late Response response;
+}
+
+abstract class ReeservationService extends Service {
+  String baseUrl = "";
+  Future<bool>createReservation(ReservationModel reservationModel);
+}
+
+class ReservationServiceImp extends ReeservationService {
+  @override
+  Future<bool>createReservation(ReservationModel reservationModel)async{
+    try {
+      response = await dio.post(baseUrl, data: reservationModel.toMap());
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+}
