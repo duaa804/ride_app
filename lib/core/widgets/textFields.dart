@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ride_app/core/resources/colors.dart';
-import 'package:ride_app/src/features/auth/view/set_password.dart';
 
 final formkey = GlobalKey<FormState>();
 RegExp pass_valid = RegExp(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)');

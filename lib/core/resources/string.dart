@@ -38,4 +38,10 @@ class StringManger {
    String TAXI = 'Taxi';
    String thankYouDescription = 'Your booking has been placed sent to\n                 0Md.Sharif Ahmed';
    String Viewcarlist = 'View car list';
+   String PrivacyPolicyforRideshare = 'Privacy Policy for Ride share';
+   String deletInfo ='Are you sure you want to delete your\n account? Please read how account deletion\n will affect.\n Deleting your account removes personal\n information our database. Tour email\n becomes permanently reserved and same\n email cannot be re-use to register a new account';
+   String contactusforrideshare ='Contact us for Ride share';
+   String contactdetail='House# 72, Road# 21, Banani, Dhaka-1213 (near Banani \n               Bidyaniketon School & \n     College, beside University of South Asia) \n\n               Call : 13301 (24/7)\n Email : support@pathao.com';
+   String name = 'Name';
+   String email ='Email';
 }
