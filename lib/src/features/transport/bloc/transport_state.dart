@@ -19,6 +19,9 @@ class BicycleSuccessState extends TransportState{
     required this.bicycleDetails,
   });
 }
+class ReservationSuccess extends TransportState{
+}
+
 
 class ErrorState extends TransportState {
 }

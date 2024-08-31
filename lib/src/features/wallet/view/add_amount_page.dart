@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
 import 'package:ride_app/core/widgets/textFields.dart';
+import 'package:ride_app/src/features/wallet/add_money_bloc/bloc/addmoney_bloc.dart';
+import 'package:ride_app/src/features/wallet/bloc/get_mywallet_info_bloc/bloc/get_my_wallet_bloc.dart';
+import 'package:ride_app/src/features/wallet/model/add_money_model.dart';
 
 class AddAmountPage extends StatelessWidget {
   AddAmountPage({super.key});
@@ -183,11 +187,94 @@ class AddAmountPage extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 15, right: 12, left: 12),
             child: Align(
                 alignment: Alignment.bottomCenter,
-                child: importantButton(
-                    text: 'confirm',
-                    function: () {
-                      context.go('/bank');
-                    })),
+                child: BlocProvider(
+                    create: (context) => AddmoneyBloc(),
+                    child: BlocConsumer<AddmoneyBloc, AddmoneyState>(
+                      listener: (context, state) {
+                        if (state is SuccessAddMoney) {
+                           showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            actions: [
+                              importantButton(
+                                  text: 'Back Home',
+                                  function: () {
+                                    Navigator.of(context).pop();
+                                  })
+                            ],
+                            title: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Stack(children: [
+                                    Image.asset('assets/images/Star.png'),
+                                    const Positioned(
+                                      top: 20,
+                                      bottom: 20,
+                                      left: 20,
+                                      right: 20,
+                                      child: Icon(
+                                        Icons.check_rounded,
+                                        size: 70,
+                                        color: color.primaryColor,
+                                      ),
+                                    ),
+                                  ]),
+                                ),
+                              ],
+                            ),
+                       ));
+                        }
+                      },
+                      builder: (context, state) {
+                        if (state is AddmoneyInitial) {
+                          return importantButton(
+                              text: 'confirm',
+                              function: () {
+                                context.read<AddmoneyBloc>().add(AddMoney(
+                                    addMoneyModel:
+                                        AddMoneyModel(code: amount.text)));
+                              });
+                        } else if (state is SuccessAddMoney) {
+                          return Container(
+                            width: 150,
+                            height: 50,
+                            child: const CircleAvatar(
+                                child: Icon(
+                              Icons.check,
+                              color: color.primaryColor,
+                            )),
+                          );
+                        } else {
+                          return Column(
+                            children: [
+                              importantButton(
+                                  text: 'confirm',
+                                  function: () {
+                                    context.read<AddmoneyBloc>().add(AddMoney(
+                                        addMoneyModel:
+                                            AddMoneyModel(code: amount.text)));
+                                  }),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: 150,
+                                  height: 50,
+                                  color: color.red,
+                                  child: const Center(
+                                    child:  Text(
+                                      'Try Again',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        }
+                      },
+                    ))),
           )
         ],
       ),

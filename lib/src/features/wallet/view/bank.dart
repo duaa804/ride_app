@@ -86,13 +86,9 @@ class BankPage extends StatelessWidget {
                                     ),
                                   ]),
                                 ),
-                            
-                           
-                           
-                              
                               ],
                             ),
-                          ));
+                       ));
                 }),
           ),
           Expanded(

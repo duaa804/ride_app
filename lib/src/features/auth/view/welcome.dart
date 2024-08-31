@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/resources/string.dart';
+import 'package:ride_app/src/features/auth/view/sign_up.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({super.key});
@@ -46,7 +47,8 @@ class WelcomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 170),
               child: InkWell(
                 onTap: () {
-                  context.go('/signup');
+                  //context.go('/signup');
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
                 },
                 child: Container(
                   width: 340,

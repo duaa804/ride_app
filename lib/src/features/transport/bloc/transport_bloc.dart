@@ -1,8 +1,11 @@
 
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_app/core/service/bicycles_service.dart';
 import 'package:ride_app/core/model/handling_model.dart';
 import 'package:ride_app/core/service/hubs_service.dart';
+import 'package:ride_app/core/service/reservation_service/mock/mock_reservation_service.dart';
 import 'package:ride_app/src/features/transport/model/bicycle_model.dart';
 import 'package:ride_app/src/features/transport/bloc/transport_event.dart';
 import 'package:ride_app/src/features/transport/bloc/transport_state.dart';
@@ -32,6 +35,17 @@ class TransportBloc extends Bloc<TransportEvent,TransportState>{
         
       }
     },);
+
+    on<createReservation>((event, emit) async {
+      log(event.reservationModel.toMap().toString());
+      var status = await MockReservationService().createReservation(event.reservationModel
+      );
+      if (status) {
+        emit(ReservationSuccess());
+      } else {
+        emit(ErrorState());
+      }
+    });
 
   }
 } 
