@@ -158,8 +158,8 @@ class _EnableLocationState extends State<EnableLocation> {
                         });
                         print(locationMessage);
                         liveLocation();
-                        //context.go('/welcome');
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>WelcomeScreen()));
+                        context.go('/mapscreen');
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>WelcomeScreen()));
                       });
                       //LocationData locationData = await location.getLocation();
                     //   var box = Hive.box('locationBox');

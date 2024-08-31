@@ -89,7 +89,7 @@ class _SignUpState extends State<SignUp> {
               padding: const EdgeInsets.all(8.0),
               child: IntlPhoneField(
                 controller: phone,
-                decoration: const InputDecoration(                  
+                decoration: const InputDecoration(
                     hintText: 'Your mobile number',
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: color.greySubtitle))),
@@ -215,12 +215,14 @@ class _SignUpState extends State<SignUp> {
                                                 confirmpassword.text)));
                                   });
                             } else if (state is SuccessToRegister) {
-                              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MapScreen(),
-                                    ));
+                              WidgetsBinding.instance
+                                  .addPostFrameCallback((timeStamp) {
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) => MapScreen(),
+                                //     ));
+                                context.go('/enablelocation');
                               });
                             } else if (state is FailedToRegister) {
                               return importantButton(
@@ -238,9 +240,10 @@ class _SignUpState extends State<SignUp> {
                                                 confirmpassword.text)));
                                   });
                             } else {
-                              return const Center(child: CupertinoActivityIndicator());
+                              return const Center(
+                                  child: CupertinoActivityIndicator());
                             }
-                            return  const SizedBox();
+                            return const SizedBox();
                           },
                         )),
                   ),

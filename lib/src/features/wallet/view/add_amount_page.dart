@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:ride_app/core/confige/hive_init.dart';
 import 'package:ride_app/core/resources/colors.dart';
 import 'package:ride_app/core/widgets/buttons.dart';
+import 'package:ride_app/core/widgets/drawers.dart';
 import 'package:ride_app/core/widgets/textFields.dart';
 import 'package:ride_app/src/features/wallet/add_money_bloc/bloc/addmoney_bloc.dart';
 import 'package:ride_app/src/features/wallet/bloc/get_mywallet_info_bloc/bloc/get_my_wallet_bloc.dart';
@@ -17,21 +18,22 @@ class AddAmountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Row(
-          children: [
-            Icon(
-              Icons.arrow_back_ios_new,
-              size: 12,
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "Back",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-            ),
-          ],
-        ),
+        leading: AppDrawer(),
+        // leading: const Row(
+        //   children: [
+        //     Icon(
+        //       Icons.arrow_back_ios_new,
+        //       size: 12,
+        //     ),
+        //     Padding(
+        //       padding: EdgeInsets.all(8.0),
+        //       child: Text(
+        //         "Back",
+        //         style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+        //       ),
+        //     ),
+        //   ],
+        // ),
         title: const Text(
           'Amount',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
@@ -202,6 +204,7 @@ class AddAmountPage extends StatelessWidget {
                                   function: () {
                                     Navigator.of(context).pop();
                                   })
+                                 
                             ],
                             title: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

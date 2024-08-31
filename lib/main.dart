@@ -69,14 +69,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home:EnableLocation(),
-    );
-    // return MaterialApp.router(
-    //   routerConfig: router,
-    //   debugShowCheckedModeBanner: false,
+    // return MaterialApp(
+    //   home:EnableLocation(),
+    // );
+    return MaterialApp.router(
+      routerConfig: router,
+      debugShowCheckedModeBanner: false,
                   
       
-    // );
+    );
   }
 }

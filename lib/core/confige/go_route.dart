@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:ride_app/src/features/favourite/favourite_page.dart';
+import 'package:ride_app/src/features/hub/view/map_screen.dart';
+import 'package:ride_app/src/features/location/enable_location.dart';
 import 'package:ride_app/src/features/onboarding/view/01_onboarding.dart';
 import 'package:ride_app/src/features/onboarding/view/02_omboarding.dart';
 import 'package:ride_app/src/features/onboarding/view/03_onboarding.dart';
@@ -22,11 +24,19 @@ import 'package:ride_app/src/features/wallet/view/create_new_wallet.dart';
 import 'package:ride_app/src/features/wallet/view/wallet.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/createnewwallet',
+  initialLocation: '/oneonboarding',
   routes: [
          GoRoute(
     path: '/availablecar',
     builder: (context, state) =>  const AvaiableCar(),
+  ),
+  GoRoute(
+    path: '/mapscreen',
+    builder: (context, state) =>  const MapScreen(),
+  ),
+  GoRoute(
+    path: '/enablelocation',
+    builder: (context, state) =>  const EnableLocation(),
   ),
     GoRoute(
     path: '/createnewwallet',
