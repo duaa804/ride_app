@@ -69,12 +69,12 @@ class Wallet extends StatelessWidget {
                           color: color.blue,
                           border: Border.all(color: color.darkGreen),
                         ),
-                        child:const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '200',
-                              // '${box!.get('balance')}',
+                              // '200',
+                              '${box!.get('balance')}',
                               style: const TextStyle(
                                   fontSize: 28, fontWeight: FontWeight.w500),
                             ),
@@ -102,13 +102,13 @@ class Wallet extends StatelessWidget {
                       color: color.blue,
                       border: Border.all(color: color.darkGreen),
                     ),
-                    child:  Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                 '${box!.get('amount')}',
+                //  '${box!.get('amount')}',
 
-                          // "\$200",
+                          "\$200",
                           style:const TextStyle(
                               fontSize: 28, fontWeight: FontWeight.w500),
                         ),

@@ -27,12 +27,8 @@ void main() {
     });
 
     test('should create HubModel from map', () {//from mapالتحقق من دالة 
-      final map = {
-        'id': 1,
-        'name': 'Test Hub',
-        'latitude': 35.6895,
-        'longitude': 139.6917,
-        'description': 'A test hub',
+      Map <String,dynamic> map = {
+       
       };
       final newHub = HubModel.fromMap(map);
       expect(newHub, hub);

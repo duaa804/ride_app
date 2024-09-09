@@ -23,7 +23,7 @@ class CreateWalletServiceImp extends CreateWalletService {
       if (response.statusCode == 201) {
         int balance = response.data['body']['balance'];
         print(balance);
-        await box!.put('amount', balance);
+        await box!.put('balance', balance);
         return DataSuccess();
       } else {
         return ErrorModel();
@@ -77,9 +77,9 @@ class CreateWalletServiceImp extends CreateWalletService {
         print(response.statusCode);
         List info = response.data['body'];
         String code = info[0]['code'];
-      //  int amount = info[0]['amount'];
-        // print(amount);
-        // await box!.put('amount', amount);
+       int amount = info[0]['amount'];
+        print(amount);
+        await box!.put('amount', amount);
         print(code);
         await box!.put('code', code);
         return DataSuccess();

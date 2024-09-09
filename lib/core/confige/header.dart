@@ -29,8 +29,8 @@ class HeaderConfig{
   if(useToken){
     return Options(
      headers: {'accept':' */*' ,
-     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODk4IiwiaWF0IjoxNzI0ODc1Njc3LCJleHAiOjE3MjQ5NjIwNzd9.usO1ifzcP8Z1F6ImiDtJ99GKlKhkKRowCZ2SdvoECVs '}
-    //  'Authorization': 'Bearer ${box!.get('token')} '}
+     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNTY0ODczOTg3IiwiaWF0IjoxNzI1ODYxNTU1LCJleHAiOjE3MjU5NDc5NTV9.YWBfNiQf8A-NBMqOR4R3WzlSEb0wlFIpGgRGjiTT14w '}
+      // 'Authorization': 'Bearer ${box!.get('token')} '}
     );
   }else{
     return Options(
