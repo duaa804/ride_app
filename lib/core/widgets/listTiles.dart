@@ -213,15 +213,27 @@ Widget transectionsListTile(
 }
 
 Widget offerListTile({required offer, required details}) {
-  return ListTile(
-    title: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(offer),
-        Text(details),
-      ],
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+      width: double.infinity,
+      height: 80,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: color.primaryColor)),
+      child: Center(
+        child: ListTile(
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(offer),
+              Text(details),
+            ],
+          ),
+          trailing: importantSmallButton(text: "collect"),
+        ),
+      ),
     ),
-    trailing: importantSmallButton(text: "collect"),
   );
 }
 

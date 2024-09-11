@@ -4,40 +4,34 @@ import 'dart:convert';
 import 'package:ride_app/core/model/handling_model.dart';
 
 class OfferModel extends ResultModel {
-  int price;
-  String model_price;
-  String photoPath;
+ String type;
+ String note;
   OfferModel({
-    required this.price,
-    required this.model_price,
-    required this.photoPath,
+    required this.type,
+    required this.note,
   });
 
   OfferModel copyWith({
-    int? price,
-    String? model_price,
-    String? photoPath,
+    String? type,
+    String? note,
   }) {
     return OfferModel(
-      price: price ?? this.price,
-      model_price: model_price ?? this.model_price,
-      photoPath: photoPath ?? this.photoPath,
+      type: type ?? this.type,
+      note: note ?? this.note,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'price': price,
-      'model_price': model_price,
-      'photoPath': photoPath,
+      'type': type,
+      'note': note,
     };
   }
 
   factory OfferModel.fromMap(Map<String, dynamic> map) {
     return OfferModel(
-      price: map['price'] as int,
-      model_price: map['model_price'] as String,
-      photoPath: map['photoPath'] as String,
+      type: map['type'] as String,
+      note: map['note'] as String,
     );
   }
 
@@ -46,18 +40,17 @@ class OfferModel extends ResultModel {
   factory OfferModel.fromJson(String source) => OfferModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'OfferModel(price: $price, model_price: $model_price, photoPath: $photoPath)';
+  String toString() => 'OfferModel(type: $type, note: $note)';
 
   @override
   bool operator ==(covariant OfferModel other) {
     if (identical(this, other)) return true;
   
     return 
-      other.price == price &&
-      other.model_price == model_price &&
-      other.photoPath == photoPath;
+      other.type == type &&
+      other.note == note;
   }
 
   @override
-  int get hashCode => price.hashCode ^ model_price.hashCode ^ photoPath.hashCode;
+  int get hashCode => type.hashCode ^ note.hashCode;
 }

@@ -29,7 +29,7 @@ class HeaderConfig{
   if(useToken){
     return Options(
      headers: {'accept':' */*' ,
-     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNTY0ODczOTg3IiwiaWF0IjoxNzI1ODYxNTU1LCJleHAiOjE3MjU5NDc5NTV9.YWBfNiQf8A-NBMqOR4R3WzlSEb0wlFIpGgRGjiTT14w '}
+     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMzY3NTg3NjM0IiwiaWF0IjoxNzI2MDc1MjcxLCJleHAiOjE3MjYxNjE2NzF9.IaQD-zkFPQz1Y1BsophHGbeyKcQTSRniNRaYWzYEtpE '}
       // 'Authorization': 'Bearer ${box!.get('token')} '}
     );
   }else{

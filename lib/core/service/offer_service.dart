@@ -25,6 +25,7 @@ class OfferServiceImp extends OfferService {
         return ErrorModel();
       }
     } on DioException catch (e) {
+      print(e.message);
       return ExceptionModel(message: e.message);
     }
   }

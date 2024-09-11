@@ -11,7 +11,8 @@ class OfferBloc extends Bloc<OfferEvent, OfferState> {
     on<GetOffer>((event, emit) async {
       emit(OfferInitial());
       ResultModel result = await OfferServiceImp().getOffer();
-      
+      print(result);
+
       if (result is ListOf<OfferModel>) {
         emit(SuccessGetOffer(offer: result.data));
       } else {
